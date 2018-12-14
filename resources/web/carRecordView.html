@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>行车记录</title>
+<link href="qrc:///web/css/style.css" rel="stylesheet">
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Uahgk1xtzA93oMjfUGBRpHSEuF6poGi7"></script>
+<script type="text/javascript" src="qrc:///web/js/qwebchannel.js"></script>
+<script type="text/javascript" src="qrc:///web/js/echarts.js"></script>
+<script type="text/javascript" src="qrc:///web/js/chartsTemplate.js"></script>
+<script type="text/javascript" src="qrc:///web/js/carRecordView.js"></script>
+
+<style>
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat( 12, minmax(0, 100%) );
+  grid-template-rows:repeat( 10, minmax(0, 100%) );
+  grid-column-gap:0.8em;
+  grid-row-gap:0.8em;
+}
+
+.map {
+  grid-column: 1 / span 6;
+  grid-row: 1 / span 10;
+}
+
+.text-dash-1 { 
+  grid-column: 7 / span 2;
+  grid-row: 1 / span 2;
+}
+.text-dash-2 {
+  grid-column: 9 / span 2;
+  grid-row: 1 / span 2;
+}
+
+.text-dash-3 {
+  grid-column: 11 / span 2;
+  grid-row: 1 / span 2;
+}
+
+.text-dash-4 {
+  grid-column: 7 / span 2;
+  grid-row: 3 / span 2;
+}
+
+.text-dash-5 {
+  grid-column: 9 / span 2;
+  grid-row: 3 / span 2;
+}
+
+.text-dash-6 {
+  grid-column: 11 / span 2;
+  grid-row: 3 / span 2;
+}
+
+
+.chart-1 {
+  grid-column: 7 / span 3;
+  grid-row: 5 / span 3;
+}
+.chart-2 {
+  grid-column: 10 / span 3;
+  grid-row: 5 / span 3;
+}
+
+.chart-3 {
+  grid-column: 7 / span 3;
+  grid-row: 8 / span 3;
+}
+
+.chart-4 {
+  grid-column: 10 / span 3;
+  grid-row: 8 / span 3;
+}
+</style>
+</head>
+<body>
+<div class="container wrapper">
+	<div  class="item map">
+		<div id="map_canvas" style="height:100%;width:100%;"></div>
+	</div>
+		
+	<div class="item text-dash-1">
+		<div class="text-dash-wrapper">
+			<div class="icon">
+				<img src="qrc:///img/path2.png">
+			</div>
+			<div class="text-dash">
+				<div class="value-wrapper">
+					<div class="value">12</div>
+					<div class="unit">公里</div>	
+				</div>			
+				<div class="desc">今日里程</div>			
+			</div>
+		</div>
+	</div>
+
+	<div class="item text-dash-2">
+		<div class="text-dash-wrapper">
+			<div class="icon">
+				<img src="qrc:///img/path.png">
+			</div>
+			<div class="text-dash">
+				<div class="value-wrapper">
+					<div class="value">3.1k</div>
+					<div class="unit">公里</div>
+				</div>
+				<div class="desc">总里程</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="item text-dash-3">
+		<div class="text-dash-wrapper">
+			<div class="icon">
+				<img src="qrc:///img/avgspeed.png">
+			</div>
+			<div class="text-dash">
+				<div class="value-wrapper">
+					<div class="value">36</div>
+					<div class="unit">公里/小时</div>
+				</div>
+				<div class="desc">平均时速</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="item text-dash-4">
+		<div class="text-dash-wrapper">
+			<div class="icon">
+				<img src="qrc:///img/maxspeed.png">
+			</div>
+			<div class="text-dash">
+				<div class="value-wrapper">
+					<div class="value">60</div>
+					<div class="unit">公里/小时</div>
+				</div>
+				<div class="desc">最高时速</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="item text-dash-5">
+		<div class="text-dash-wrapper">
+			<div class="icon">
+				<img src="qrc:///img/oil2.png">
+			</div>
+			<div class="text-dash">
+				<div class="value-wrapper">
+					<div class="value">1.2</div>
+					<div class="unit">升</div>
+				</div>
+				<div class="desc">今日油耗</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="item text-dash-6">
+		<div class="text-dash-wrapper">
+			<div class="icon">
+				<img src="qrc:///img/oils.png">
+			</div>
+			<div class="text-dash">
+				<div class="value-wrapper">
+					<div class="value">9.1</div>
+					<div class="unit">升/百公里</div>
+				</div>
+				<div class="desc">平均油耗</div>
+			</div>
+		</div>
+	</div>
+
+				
+	<div class="item chart-1"><div class="chart" id="7dayMiles"></div></div>
+	<div class="item chart-2"><div class="chart" id="30dayMiles"></div></div>
+
+
+	<div class="item chart-3"><div class="chart" id="7dayOilWear"></div></div>
+	<div class="item chart-4"><div class="chart" id="30dayOilWear"></div></div>
+
+</div>
+</body>
+</html>

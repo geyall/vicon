@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>行车记录</title>
+<!-- <link href="css/dark.css" rel="stylesheet"> -->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Uahgk1xtzA93oMjfUGBRpHSEuF6poGi7"></script>
+<script type="text/javascript" src="js/qwebchannel.js"></script>
+<script type="text/javascript" src="js/echarts.js"></script>
+<script type="text/javascript" src="js/chartsTemplate.js"></script>
+<script type="text/javascript" src="js/carRecordView.js"></script>
+<style>
+/* css reset */
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-weight: inherit;
+    font-style: inherit;
+}
+/* css reset */
+
+html {
+  height:100%;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000000;
+  max-height:100%;
+  height:100%;
+  font-family: 微软雅黑, sans-serif;
+  font-size: 14px;
+  color:#000000;
+  box-sizing: inherit;
+  overflow: hidden;
+}
+
+.container {
+  width:100%;
+  height:100%;
+  box-sizing: inherit;
+}
+
+.item {
+  height:100%;
+  width:100%;
+  background: #212121;
+  box-sizing: inherit;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, auto [col-start]);
+  grid-template-rows: repeat(10, auto [row-start]);
+  grid-column-gap:0.8em;
+  grid-row-gap:0.8em;
+  justify-items:stretch;
+}
+
+.map {
+  grid-column: 1 / span 6;
+  grid-row: 1 / span 10;
+}
+.text-dash-1 { 
+  grid-column: 7 / span 2;
+  grid-row: 1 / span 2;
+}
+.text-dash-2 {
+  grid-column: 9 / span 2;
+  grid-row: 1 / span 2;
+}
+
+.text-dash-3 {
+  grid-column: 11 / span 2;
+  grid-row: 1 / span 2;
+}
+
+.text-dash-4 {
+  grid-column: 7 / span 2;
+  grid-row: 3 / span 2;
+}
+
+.text-dash-5 {
+  grid-column: 9 / span 2;
+  grid-row: 3 / span 2;
+}
+
+.text-dash-6 {
+  grid-column: 11 / span 2;
+  grid-row: 3 / span 2;
+}
+
+
+.chart-1 {
+  grid-column: 7 / span 3;
+  grid-row: 5 / span 3;
+}
+.chart-2 {
+  grid-column: 10 / span 3;
+  grid-row: 5 / span 3;
+}
+
+.chart-3 {
+  grid-column: 7 / span 3;
+  grid-row: 8 / span 3;
+}
+
+.chart-4 {
+  grid-column: 10 / span 3;
+  grid-row: 8 / span 3;
+}
+
+.text-dash-wrapper > .icon {
+  display: inline-flex;
+  width:40%;
+  height:100%;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  box-sizing: inherit;
+}
+
+.text-dash-wrapper > .icon > img {
+   height:auto;
+   width: 50%;
+   box-sizing: inherit;
+}
+
+.text-dash-wrapper .text-dash {
+  width:60%;
+  height:100%;
+  padding:0.4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: inherit;
+}
+
+.text-dash-wrapper .text-dash .value-wrapper {
+  vertical-align: sub;
+  box-sizing: inherit;
+}
+
+.text-dash-wrapper .text-dash .value {
+  display: inline-block;
+  color:#ffffff;
+  /*font-size: 2.5714em;*/
+  font-size:2em;
+  font-weight: bold;
+}
+
+.text-dash-wrapper .text-dash .unit {
+  display: inline-block;
+  color:#868686;
+  font-size: 0.8571em;
+  margin-left: 0.8em;
+}
+
+.text-dash-wrapper .text-dash .desc {
+  display: inline-block;
+  color:#868686;
+  font-size: 0.8571em;
+}
+
+.chart {
+  height:100%;
+  width:100%;
+}
+</style>
+</head>
+<body>
+<div class="container wrapper">
+
+	<div id="map_canvas" class="item map"></div>
+		
+			
+	<div class="item text-dash-1 text-dash-wrapper">
+		<div class="icon">
+			<img src="../img/path2.png">
+		</div>
+		<div class="text-dash">
+			<div class="value-wrapper">
+				<div class="value">12</div>
+				<div class="unit">公里</div>	
+			</div>			
+			<div class="desc">今日里程</div>			
+		</div>
+	</div>
+
+	<div class="item text-dash-2 text-dash-wrapper">
+		<div class="icon">
+			<img src="../img/path.png">
+		</div>
+		<div class="text-dash">
+			<div class="value-wrapper">
+				<div class="value">3.1k</div>
+				<div class="unit">公里</div>
+			</div>
+			<div class="desc">总里程</div>
+		</div>
+	</div>
+
+	<div class="item text-dash-3 text-dash-wrapper">
+		<div class="icon">
+			<img src="../img/avgspeed.png">
+		</div>
+		<div class="text-dash">
+			<div class="value-wrapper">
+				<div class="value">36</div>
+				<div class="unit">公里/小时</div>
+			</div>
+			<div class="desc">平均时速</div>
+		</div>
+	</div>
+			
+	<div class="item text-dash-4 text-dash-wrapper">
+		<div class="icon">
+			<img src="../img/maxspeed.png">
+		</div>
+		<div class="text-dash">
+			<div class="value-wrapper">
+				<div class="value">60</div>
+				<div class="unit">公里/小时</div>
+			</div>
+			<div class="desc">最高时速</div>
+		</div>
+	</div>
+
+	<div class="item text-dash-5 text-dash-wrapper">
+		<div class="icon">
+			<img src="../img/oil2.png">
+		</div>
+		<div class="text-dash">
+			<div class="value-wrapper">
+				<div class="value">1.2</div>
+				<div class="unit">升</div>
+			</div>
+			<div class="desc">今日油耗</div>
+		</div>
+	</div>
+
+	<div class="item text-dash-6 text-dash-wrapper">
+		<div class="icon">
+			<img src="../img/oils.png">
+		</div>
+		<div class="text-dash">
+			<div class="value-wrapper">
+				<div class="value">9.1</div>
+				<div class="unit">升/百公里</div>
+			</div>
+			<div class="desc">平均油耗</div>
+		</div>
+	</div>
+
+
+			
+	<div class="item chart-1"><div class="chart" id="7dayMiles"></div></div>
+	<div class="item chart-2"><div class="chart" id="30dayMiles"></div></div>
+			
+
+	<div class="item chart-3"><div class="chart" id="7dayOilWear"></div></div>
+	<div class="item chart-4"><div class="chart" id="30dayOilWear"></div></div>
+		
+	</div> <!-- row 1 -->
+</div>
+</body>
+</html>

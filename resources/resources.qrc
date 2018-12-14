@@ -1,0 +1,58 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+<qresource>
+	<file alias="qtquickcontrols2.conf">./qtquickcontrols2.conf</file>
+	<file>icons/darkIconTheme/index.theme</file>
+	<file>icons/darkIconTheme/16x16/diagnostic.png</file>
+	<file>icons/darkIconTheme/16x16/control.png</file>
+	<file>icons/darkIconTheme/16x16/gps.png</file>
+	<file>icons/darkIconTheme/16x16/settings.png</file>
+	<file>icons/darkIconTheme/16x16/dashboard.png</file>
+
+	<file>img/logo.png</file>
+	<file>img/stop.png</file>
+	<file>img/up-arrow.png</file>
+	<file>img/down-arrow.png</file>
+	<file>img/play-button.png</file>
+	<file>img/pause-button.png</file>
+	<file>img/open-box.png</file>
+	<file>img/closed-box.png</file>
+	<file>img/spotlight.png</file>
+	<file>img/path2.png</file>
+	<file>img/path.png</file>
+	<file>img/avgspeed.png</file>
+	<file>img/maxspeed.png</file>
+	<file>img/oil2.png</file>
+	<file>img/oils.png</file>
+
+	<file>js/test.js</file>
+
+<!-- 	<file>web/carConditionView.html</file>
+	<file>web/carRecordView.html</file>
+	<file>web/js/carRecordView.js</file>
+	<file>web/js/carConditionView.js</file>
+	<file>web/js/echarts.js</file>
+	<file>web/js/chartsTemplate.js</file>
+	<file>web/js/chartsutil.js</file>
+	<file>web/js/qwebchannel.js</file>
+	<file>web/css/style.css</file> -->
+
+	<file>qml/App.qml</file>
+	<file>qml/CameraPlayer.qml</file>
+	<file>qml/CarConditionView.qml</file>
+	<file>qml/CarRecordView.qml</file>
+	<file>qml/ControlView.qml</file>
+	<file>qml/Dashboard.qml</file>
+	<file>qml/controls/LineQChart.qml</file>
+	<file>qml/controls/CircularGaugeQChart.qml</file>
+	<file>qml/controls/ThermometerQChart.qml</file>
+	<file>qml/controls/ThermometerPanel.qml</file>
+	<file>qml/controls/CircularGaugePanel.qml</file>
+	<file>qml/controls/BusyIndicator.qml</file>
+	<file>qml/controls/ControlBox.qml</file>
+	<file>qml/controls/ControlButton.qml</file>
+	<file>qml/controls/Panel.qml</file>
+	<file>qml/controls/TextDash.qml</file>
+	<file>qml/controls/ToolBrand.qml</file>
+</qresource>
+</RCC>

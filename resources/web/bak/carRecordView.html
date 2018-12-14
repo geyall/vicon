@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>行车记录</title>
+<link href="css/dark.css" rel="stylesheet">
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Uahgk1xtzA93oMjfUGBRpHSEuF6poGi7"></script>
+<script type="text/javascript" src="js/qwebchannel.js"></script>
+<script type="text/javascript" src="js/echarts.js"></script>
+<script type="text/javascript" src="js/chartsTemplate.js"></script>
+<script type="text/javascript" src="js/carRecordView.js"></script>
+
+</head>
+<body>
+<div class="container fill-height">
+	<div class="row fill-height">
+		<div id="map_canvas" class="item col-6 fill-height"></div>
+		<div class="item col-6 fill-height">
+			<div class="row" style="height:calc(20% - 0.4em);">
+				<div class="text-dash-wrapper">
+					<div class="icon">
+						<img src="../img/path2.png">
+					</div>
+					<div class="text-dash">
+						<div class="value-wrapper">
+							<div class="value">12</div>
+							<div class="unit">公里</div>	
+						</div>			
+						<div class="desc">今日里程</div>			
+					</div>
+				</div>
+				<div class="text-dash-wrapper">
+					<div class="icon">
+						<img src="../img/path.png">
+					</div>
+					<div class="text-dash">
+						<div class="value-wrapper">
+							<div class="value">3.1k</div>
+							<div class="unit">公里</div>
+						</div>
+						<div class="desc">总里程</div>
+					</div>
+				</div>
+				<div class="text-dash-wrapper">
+					<div class="icon">
+						<img src="../img/avgspeed.png">
+					</div>
+					<div class="text-dash">
+						<div class="value-wrapper">
+							<div class="value">36</div>
+							<div class="unit">公里/小时</div>
+						</div>
+						<div class="desc">平均时速</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" style="height:calc(20% - 0.4em);">
+				<div class="text-dash-wrapper">
+					<div class="icon">
+						<img src="../img/maxspeed.png">
+					</div>
+					<div class="text-dash">
+						<div class="value-wrapper">
+							<div class="value">60</div>
+							<div class="unit">公里/小时</div>
+						</div>
+						<div class="desc">最高时速</div>
+					</div>
+				</div>
+				<div class="text-dash-wrapper">
+					<div class="icon">
+						<img src="../img/oil2.png">
+					</div>
+					<div class="text-dash">
+						<div class="value-wrapper">
+							<div class="value">1.2</div>
+							<div class="unit">升</div>
+						</div>
+						<div class="desc">今日油耗</div>
+					</div>
+				</div>
+				<div class="text-dash-wrapper">
+					<div class="icon">
+						<img src="../img/oils.png">
+					</div>
+					<div class="text-dash">
+						<div class="value-wrapper">
+							<div class="value">9.1</div>
+							<div class="unit">升/百公里</div>
+						</div>
+						<div class="desc">平均油耗</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" style="height:30%">
+				<div class="panel col-6"><div class="chart" id="7dayMiles"></div></div>
+				<div class="panel col-6"><div class="chart" id="30dayMiles"></div></div>
+			</div>
+
+			<div class="row" style="height:30%;">
+				<div class="panel col-6"><div class="chart" id="7dayOilWear"></div></div>
+				<div class="panel col-6"><div class="chart" id="30dayOilWear"></div></div>
+			</div>
+		</div>
+	</div> <!-- row 1 -->
+</div>
+</body>
+</html>
